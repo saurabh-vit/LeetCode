@@ -1,16 +1,23 @@
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        string str = "";
-        for (char c : s) {
-            if (isalnum(c)) {
-                str += tolower(c);
-            }
+    bool isalphanum(char ch){
+        if((ch>='0' && ch<='9') || (tolower(ch) >= 'a' && tolower(ch)<='z')){
+            return true;
         }
-        int n = str.length();
+        return false;
+    }
+    bool isPalindrome(string s) {
+        int n = s.length();
         int st = 0, end = n-1;
         while(st<end){
-            if(str[st]!=str[end]){
+            if(!isalphanum(s[st])){
+                st++;
+                continue;
+            }if(!isalphanum(s[end])){
+                end--;
+                continue;
+            }
+            if(tolower(s[st]) != tolower(s[end])){
                 return false;
             }
             st++;
