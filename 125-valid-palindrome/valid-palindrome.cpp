@@ -7,8 +7,7 @@ public:
         return false;
     }
     bool isPalindrome(string s) {
-        int n = s.length();
-        int st = 0, end = n-1;
+        int st = 0, end = s.length()-1;
         while(st<end){
             if(!isalphanum(s[st])){
                 st++;
