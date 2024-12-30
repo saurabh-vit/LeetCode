@@ -1,16 +1,12 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if(x<0){
+        if (x < 0) {
             return false;
         }
-        string str = to_string(x);
-        string str2 = str;
-        reverse(str2.begin(), str2.end());
-        if(str==str2){
-            return true;
-        }else{
-            return false;
-        }
+        std::string str = std::to_string(x);
+        std::string reversed_str = str;
+        std::reverse(reversed_str.begin(), reversed_str.end());
+        return str == reversed_str;
     }
 };
