@@ -19,17 +19,29 @@ public:
         // }
         // return n;
 
+        // int n = nums.size();
+        // if(n<=2) return n;
+        // int i = 2;
+        // for(int j = 2; j<n;){
+        //     if(nums[j]==nums[j-i]){
+        //         nums.erase(nums.begin()+j);
+        //         n--;
+        //     }else{
+        //         j++;
+        //     }
+        // }
+        // return n;
+
         int n = nums.size();
-        if(n<=2) return n;
+        if (n <= 2) return n;
         int i = 2;
-        for(int j = 2; j<n;){
-            if(nums[j]==nums[j-i]){
-                nums.erase(nums.begin()+j);
-                n--;
-            }else{
-                j++;
+        for (int j = 2; j < n; j++) {
+            if (nums[j] != nums[i - 2]) {
+                nums[i] = nums[j];
+                i++;
             }
         }
-        return n;
+        nums.resize(i);
+        return i; 
     }
 };
