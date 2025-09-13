@@ -6,11 +6,12 @@ public:
         for (int i = 0; i < n; i++) {
             freq[s[i] - 'a']++;
         }
+        string vowels = "aeiou";
         int maxVowel = 0, maxConsonant = 0;
         for (int i = 0; i < 26; i++) {
             if (freq[i] == 0) continue;
             char c = 'a' + i;
-            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            if (vowels.find(c) != string::npos) {
                 maxVowel = max(maxVowel, freq[i]);
             } else {
                 maxConsonant = max(maxConsonant, freq[i]);
