@@ -1,22 +1,22 @@
 class Solution {
 public:
     bool isValid(string s) {
-         std::stack<char> stack;
-        std::unordered_map<char, char> matchingBrackets = {
+        stack<char> st;
+        unordered_map<char, char> matching = {
             {')', '('},
-            {']', '['},
-            {'}', '{'}
+            {'}', '{'},
+            {']', '['}
         };
-        for (char c : s) {
-            if (matchingBrackets.count(c)) {
-                if (stack.empty() || stack.top() != matchingBrackets[c]) {
+        for(char c : s){
+            if(matching.count(c)){
+                if(st.empty() || st.top() != matching[c]){
                     return false;
                 }
-                stack.pop();
-            } else {
-                stack.push(c);
+                st.pop();
+            }else{
+                st.push(c);
             }
         }
-        return stack.empty();
+        return st.empty();
     }
 };
