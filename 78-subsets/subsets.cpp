@@ -1,20 +1,19 @@
 class Solution {
 public:
-    void set(vector<int> &nums, vector<int> &ans, int i, vector<vector<int>> &allset){
-        if(i == nums.size()){
-            allset.push_back({ans});
+    void helper(vector<int> &nums, vector<vector<int>> &ans, int i, vector<int> &curr){
+        if(i==nums.size()){
+            ans.push_back({curr});
             return;
         }
-        ans.push_back(nums[i]);
-        set(nums, ans, i+1, allset);
-
-        ans.pop_back();
-        set(nums, ans, i+1, allset);
+        curr.push_back(nums[i]);
+        helper(nums, ans, i+1, curr);
+        curr.pop_back();
+        helper(nums, ans, i+1, curr);
     }
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> allset;
-        vector<int> ans;
-        set(nums, ans, 0, allset);
-        return allset;
+        vector<vector<int>> ans;
+        vector<int> curr;
+        helper(nums, ans, 0, curr);
+        return ans;
     }
 };
